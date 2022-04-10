@@ -21,4 +21,11 @@ totalCoins = initialCoins;
 balances[minter] = initialCoins;
 }
 
+function mint(address owner, uint amount) {
+if (msg.sender != minter) return;
+balances[owner] += amount;
+totalCoins += amount;
+LogCoinsMinted(owner, amount);
+}
+
 }
