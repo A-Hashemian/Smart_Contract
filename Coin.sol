@@ -28,4 +28,11 @@ totalCoins += amount;
 LogCoinsMinted(owner, amount);
 }
 
+function send(address receiver, uint amount) {
+if (balances[msg.sender] < amount) return;
+balances[msg.sender] -= amount;
+balances[receiver] += amount;
+LogCoinsSent(receiver, amount);
+}
+
 }
