@@ -35,4 +35,8 @@ balances[receiver] += amount;
 LogCoinsSent(receiver, amount);
 }
 
+function queryBalance(address addr) constant returns (uint balance) {
+return balances[addr];
+}
+
 }
