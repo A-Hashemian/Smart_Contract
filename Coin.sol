@@ -14,4 +14,11 @@ uint public totalCoins;
 event LogCoinsMinted(address deliveredTo, uint amount);
 event LogCoinsSent(address sentTo, uint amount);
 
+mapping (address => uint) balances;
+function Coin(uint initialCoins) {
+minter = msg.sender;
+totalCoins = initialCoins;
+balances[minter] = initialCoins;
+}
+
 }
