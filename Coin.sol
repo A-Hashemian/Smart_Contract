@@ -11,4 +11,7 @@ contract Coin {
 address public minter;
 uint public totalCoins;
 
+event LogCoinsMinted(address deliveredTo, uint amount);
+event LogCoinsSent(address sentTo, uint amount);
+
 }
