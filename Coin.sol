@@ -39,4 +39,9 @@ function queryBalance(address addr) constant returns (uint balance) {
 return balances[addr];
 }
 
+function killCoin() returns (bool status) {
+if (msg.sender != minter) throw;
+selfdestruct(minter);
+}
+
 }
