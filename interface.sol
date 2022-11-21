@@ -1,57 +1,39 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
-contract Counter {
-    uint public count;
+contract Payable {
+    // Payable address can receive Ether
+    address payable public owner;
 
-    function increment() external {
-        count += 1;
-    }
-}
-
-interface ICounter {
-    function count() external view returns (uint);
-
-    function increment() external;
-}
-
-contract MyContract {
-    function incrementCounter(address _counter) external {
-        ICounter(_counter).increment();
+    // Payable constructor can receive Ether
+    constructor() payable {
+        owner = payable(msg.sender);
     }
 
-    function getCount(address _counter) external view returns (uint) {
-        return ICounter(_counter).count();
+    // Function to deposit Ether into this contract.
+    // Call this function along with some Ether.
+    // The balance of this contract will be automatically updated.
+    function deposit() public payable {}
+
+    // Call this function along with some Ether.
+    // The function will throw an error since this function is not payable.
+    function notPayable() public {}
+
+    // Function to withdraw all Ether from this contract.
+    function withdraw() public {
+        // get the amount of Ether stored in this contract
+        uint amount = address(this).balance;
+
+        // send all Ether to owner
+        // Owner can receive Ether since the address of owner is payable
+        (bool success, ) = owner.call{value: amount}("");
+        require(success, "Failed to send Ether");
     }
-}
 
-// Uniswap example
-interface UniswapV2Factory {
-    function getPair(address tokenA, address tokenB)
-        external
-        view
-        returns (address pair);
-}
-
-interface UniswapV2Pair {
-    function getReserves()
-        external
-        view
-        returns (
-            uint112 reserve0,
-            uint112 reserve1,
-            uint32 blockTimestampLast
-        );
-}
-
-contract UniswapExample {
-    address private factory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
-    address private dai = 0x6B175474E89094C44Da98b954EedeAC495271d0F;
-    address private weth = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
-
-    function getTokenReserves() external view returns (uint, uint) {
-        address pair = UniswapV2Factory(factory).getPair(dai, weth);
-        (uint reserve0, uint reserve1, ) = UniswapV2Pair(pair).getReserves();
-        return (reserve0, reserve1);
+    // Function to transfer Ether from this contract to address from input
+    function transfer(address payable _to, uint _amount) public {
+        // Note that "to" is declared as payable
+        (bool success, ) = _to.call{value: _amount}("");
+        require(success, "Failed to send Ether");
     }
 }
