@@ -15,6 +15,19 @@ contract MyToken is Ownable, ERC20 {
 //The SafeMath library is used to perform mathematical operations on uint256 types and prevent integer overflow or underflow
 using SafeMath for uint256;
 
+mapping (address => bool) public minters;
+uint256 public maxSupply;
+
+//a mapping called minters that maps address to bool and a uint256 variable called maxSupply are declared
+
+
+constructor(uint256 initialSupply, uint256 _maxSupply) ERC20("My Token", "MTKN") {
+
+_mint(msg.sender, initialSupply);
+maxSupply = _maxSupply;
+
+}
+
 
 
 }
