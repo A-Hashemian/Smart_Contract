@@ -29,6 +29,18 @@ maxSupply = _maxSupply;
 }
 
 
+//addMinter and removeMinter functions allow the owner of the contract to add or remove an address from the minters list
+
+function addMinter(address _minter) external onlyOwner {
+    minters[_minter] = true;
+}
+
+function removeMinter(address _minter) external onlyOwner {
+    minters[_minter] = false;
+}
+
+
+
 
 }
 
