@@ -39,6 +39,11 @@ function removeMinter(address _minter) external onlyOwner {
     minters[_minter] = false;
 }
 
+function mint(address _to, uint256 _amount) external {
+    require(minters[msg.sender], "Only minters can call this function");
+    require(totalSupply().add(_amount) <= maxSupply, "Exceeds maximum supply");
+    _mint(_to, _amount);
+}
 
 
 
