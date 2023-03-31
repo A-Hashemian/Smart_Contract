@@ -8,6 +8,13 @@ and MDTrack is a public hashmap that maps addresses to token IDs, which are of t
 uint32 public Id;
 mapping(address => uint32) public MDTrack;
 
+constructor()
+ERC721Metadata("Condos Token", "CONDO")
+payable public {
+Id = 0;
+}
+
+
 
 
 
