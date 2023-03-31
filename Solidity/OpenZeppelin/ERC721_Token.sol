@@ -42,6 +42,7 @@ return Id;
 
 //The method mints new non-fungible tokens to the receiver's address. It also allows the owner to set initial metadata using the input parameters.
 //The metadata is set using the setter for TokenURI from ERC721Metadata.sol
+//Every time a new token is issued, the MDTrack hashmap is updated to map the holding address to the token ID.
 //transferNFT method
 function transferNFT(address sender,address receiver, uint32
 transId, string calldata metadata) external
