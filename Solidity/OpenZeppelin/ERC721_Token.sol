@@ -26,6 +26,8 @@ constructor (string memory name, string memory symbol) public {
 // The constructor initialized the name (Condos Token) and symbol (CONDO) for my token
 // It also registers a new ERC165 interface type for our non-fungible token. I also assign an initial value of 0 to our ID parameter.
 
+
+// define a method for creating NFTs and a method for transferring NFTs
 //createNFT method
 function createNFT(address receiver, string calldata metadata)
 external returns (uint32)
