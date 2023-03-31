@@ -16,7 +16,12 @@ payable public {
 Id = 0;
 }
 
-
+//ERC721Metadata Constructor Method
+constructor (string memory name, string memory symbol) public {
+ _name = name;
+ _symbol = symbol;
+ _registerInterface(_INTERFACE_ID_ERC721_METADATA);
+ }
 
 
 
