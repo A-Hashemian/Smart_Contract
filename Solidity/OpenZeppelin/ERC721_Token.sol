@@ -23,7 +23,7 @@ constructor (string memory name, string memory symbol) public {
  _registerInterface(_INTERFACE_ID_ERC721_METADATA);
  }
 
-
+// The constructor initialized the name (Condos Token) and symbol (CONDO) for my token
 
 
 
