@@ -39,6 +39,8 @@ MDTrack[receiver] = Id;
 return Id;
 }
 
+
+//The method mints new non-fungible tokens to the receiver's address. It also allows the owner to set initial metadata using the input parameters.
 //transferNFT method
 function transferNFT(address sender,address receiver, uint32
 transId, string calldata metadata) external
