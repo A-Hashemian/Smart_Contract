@@ -39,5 +39,16 @@ MDTrack[receiver] = Id;
 return Id;
 }
 
+//transferNFT method
+function transferNFT(address sender,address receiver, uint32
+transId, string calldata metadata) external
+{
+_transferFrom(sender, receiver, transId);
+_setTokenURI(transId,metadata);
+delete MDTrack[sender];
+MDTrack[receiver] = Id;
+}
 
+
+}
 }
