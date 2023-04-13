@@ -10,3 +10,14 @@ contract MyToken is ERC1155, Context {
         _mint(_msgSender(), 1, 100, "");
         _mint(_msgSender(), 2, 50, "");
     }
+
+   function supportsInterface(bytes4 interfaceId)
+        public
+        view
+        virtual
+        override(ERC1155)
+        returns (bool)
+    {
+        return super.supportsInterface(interfaceId);
+    }
+}
