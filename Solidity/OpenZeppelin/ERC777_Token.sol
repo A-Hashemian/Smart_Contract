@@ -11,6 +11,11 @@ contract MyToken is ERC777 {
     ) ERC777("My Token", "MTK", defaultOperators) {
         _mint(msg.sender, initialSupply, "", "");
     }
+    
+        function mint(uint256 amount) public {
+        _mint(msg.sender, amount, "", "");
+    }
+
 }
 
 
