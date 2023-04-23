@@ -15,7 +15,10 @@ contract MyToken is ERC777 {
         function mint(uint256 amount) public {
         _mint(msg.sender, amount, "", "");
     }
-
+    
+   function send(address recipient, uint256 amount) public {
+        _send(msg.sender, recipient, amount, "", "");
+    }
 }
 
 
