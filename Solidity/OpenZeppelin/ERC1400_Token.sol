@@ -20,5 +20,12 @@ contract MySecurityToken is ERC1400, Ownable {
         bytes32[] memory defaultPartitions
     ) ERC1400(name, symbol, granularity, controllers, defaultPartitions) {}
 
-
+ // Function to issue new tokens to a specified address, can only be called by the contract owner
+    function issue(
+        address tokenHolder,
+        uint256 amount,
+        bytes memory data
+    ) public onlyOwner {
+        _issue(tokenHolder, amount, data);
+    }
 }
