@@ -11,5 +11,14 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/v4.3.1/contr
 contract MySecurityToken is ERC1400, Ownable {
 
 
+// Constructor function which initializes the token with the given parameters
+    constructor(
+        string memory name,
+        string memory symbol,
+        uint256 granularity,
+        address[] memory controllers,
+        bytes32[] memory defaultPartitions
+    ) ERC1400(name, symbol, granularity, controllers, defaultPartitions) {}
+
 
 }
