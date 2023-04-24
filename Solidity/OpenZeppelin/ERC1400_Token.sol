@@ -28,4 +28,12 @@ contract MySecurityToken is ERC1400, Ownable {
     ) public onlyOwner {
         _issue(tokenHolder, amount, data);
     }
+    
+     // Function to redeem tokens from the caller's address, with a specified amount and data
+    function redeem(
+        uint256 amount,
+        bytes memory data
+    ) public {
+        _redeem(msg.sender, amount, data);
+    }
 }
