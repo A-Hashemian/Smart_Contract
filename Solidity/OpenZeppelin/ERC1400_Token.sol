@@ -36,4 +36,14 @@ contract MySecurityToken is ERC1400, Ownable {
     ) public {
         _redeem(msg.sender, amount, data);
     }
+    
+      // Function to transfer tokens in a specified partition to a specified address
+    function transferByPartition(
+        bytes32 partition,
+        address to,
+        uint256 value,
+        bytes memory data
+    ) public {
+        _transferByPartition(partition, msg.sender, msg.sender, to, value, data, "", "");
+    }
 }
