@@ -37,4 +37,13 @@ contract TRC20Token {
         emit Transfer(msg.sender, to, value);
         return true;
     }
+    
+      function approve(address spender, uint256 value) public returns (bool) {
+        // Approve the specified address to spend the sender's tokens
+        _allowed[msg.sender][spender] = value;
+
+        // Emit an Approval event
+        emit Approval(msg.sender, spender, value);
+        return true;
+    }
 }
