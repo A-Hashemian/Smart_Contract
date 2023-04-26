@@ -46,4 +46,19 @@ contract TRC20Token {
         emit Approval(msg.sender, spender, value);
         return true;
     }
+    
+       function transferFrom(address from, address to, uint256 value) public returns (bool) {
+        // Check that the sender has enough tokens to transfer and has been approved for the specified spending limit
+        require(value <= _balances[from]);
+        require(value <= _allowed[from][msg.sender]);
+
+        // Update the sender, recipient, and spender's token balances
+        _balances[from] -= value;
+        _balances[to] += value;
+        _allowed[from][msg.sender] -= value;
+
+        // Emit a Transfer event
+        emit Transfer(from, to, value);
+        return true;
+    }
 }
