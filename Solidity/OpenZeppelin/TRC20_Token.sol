@@ -24,4 +24,17 @@ contract TRC20Token {
         // Get the token balance of the specified address
         return _balances[owner];
     }
+    
+       function transfer(address to, uint256 value) public returns (bool) {
+        // Check that the sender has enough tokens to transfer
+        require(value <= _balances[msg.sender]);
+
+        // Update the sender and recipient's token balances
+        _balances[msg.sender] -= value;
+        _balances[to] += value;
+
+        // Emit a Transfer event
+        emit Transfer(msg.sender, to, value);
+        return true;
+    }
 }
