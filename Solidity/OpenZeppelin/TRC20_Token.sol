@@ -19,4 +19,9 @@ contract TRC20Token {
         name = tokenName;
         symbol = tokenSymbol;
     }
+    
+       function balanceOf(address owner) public view returns (uint256) {
+        // Get the token balance of the specified address
+        return _balances[owner];
+    }
 }
