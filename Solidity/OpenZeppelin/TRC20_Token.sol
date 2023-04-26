@@ -66,4 +66,8 @@ contract TRC20Token {
         // Get the approved spending limit of the specified address
         return _allowed[owner][spender];
     }
+    
+        // Events to track token transfers and spending approvals
+    event Transfer(address indexed from, address indexed to, uint256 value);
+    event Approval(address indexed owner, address indexed spender, uint256 value);
 }
