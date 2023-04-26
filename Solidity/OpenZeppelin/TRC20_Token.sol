@@ -61,4 +61,9 @@ contract TRC20Token {
         emit Transfer(from, to, value);
         return true;
     }
+    
+     function allowance(address owner, address spender) public view returns (uint256) {
+        // Get the approved spending limit of the specified address
+        return _allowed[owner][spender];
+    }
 }
